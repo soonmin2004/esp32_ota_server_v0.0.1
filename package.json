@@ -1,0 +1,17 @@
+{
+  "name": "esp32-ota-server",
+  "version": "0.0.1",
+  "description": "ESP32 OTA update server using WebSocket notifications and HTTP firmware hosting.",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "chokidar": "^3.6.0",
+    "express": "^4.19.2",
+    "dotenv": "^16.4.5",
+    "ws": "^8.17.0"
+  }
+}

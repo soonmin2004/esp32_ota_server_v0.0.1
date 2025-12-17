@@ -1,0 +1,15 @@
+# Node/Express server artifacts
+node_modules/
+logs/
+.env
+.env.local
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+
+# IDE / OS files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

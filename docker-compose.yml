@@ -1,0 +1,11 @@
+services:
+  ota-server:
+    build: .
+    image: ota-server:0.0.1
+    container_name: ota-server
+    ports:
+      - "3000:3000"        # 필요 포트에 맞게 조정
+    volumes:
+      - ./firmware:/app/firmware   # 서버 코드가 찾는 경로(/app/firmware)로 바인드
+      - ./logs:/app/logs
+    restart: unless-stopped
