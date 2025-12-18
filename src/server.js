@@ -1,15 +1,12 @@
 const fs = require('fs');
 const path = require('path');
 const http = require('http');
-const express = require('express');
 
+const createApp = require('./app');
 const { HOST, PORT, FIRMWARE_DIR, LOG_DIR, FIRMWARE_FILE, SUPPORTED_DEVICES } = require('./config');
-const { createRouter } = require('./routes');
-const { createWebSocketServer } = require('./lib/ws');
-const { createWatcher } = require('./lib/watcher');
-
-const app = express();
-app.use(express.json({ limit: '1mb' }));
+const { createWebSocketServer } = require('./services/ws.service');
+const { createWatcher } = require('./services/watcher.service');
+const { startDeviceMacsWatcher } = require('./services/deviceRegistry.service');
 
 // Ensure required directories exist.
 [FIRMWARE_DIR, LOG_DIR].forEach((dir) => {
@@ -18,14 +15,7 @@ app.use(express.json({ limit: '1mb' }));
   }
 });
 
-// Simple request logging.
-app.use((req, _res, next) => {
-  console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`);
-  next();
-});
-
-// Routes.
-app.use(createRouter());
+const app = createApp();
 
 // Server and WebSocket.
 const server = http.createServer(app);
@@ -35,6 +25,9 @@ const { broadcast } = createWebSocketServer(server);
 createWatcher((deviceId) => {
   broadcast(deviceId);
 });
+
+// Watch device MAC allowlist file changes (if configured).
+startDeviceMacsWatcher();
 
 server.listen(PORT, HOST, () => {
   console.log(`ESP32 OTA server listening on http://${HOST}:${PORT}`);

@@ -12,9 +12,8 @@ COPY src ./src
 COPY firmware ./firmware
 # Create logs directory inside container (logs bind-mounted at runtime).
 RUN mkdir -p ./logs
-# .env is optional; copy if present.
-COPY .env .env
 
+# Port is configured via PORT env; EXPOSE is documentation only.
 EXPOSE 3000
 
 # Default env (override via .env or docker run -e)

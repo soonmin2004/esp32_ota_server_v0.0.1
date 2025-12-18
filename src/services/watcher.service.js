@@ -1,5 +1,5 @@
 const chokidar = require('chokidar');
-const { WATCH_GLOBS, deriveDeviceIdFromPath } = require('./firmware');
+const { WATCH_GLOBS, deriveDeviceIdFromPath } = require('../models/firmware.model');
 
 function createWatcher(onDeviceChange) {
   const watcher = chokidar.watch(WATCH_GLOBS, { ignoreInitial: true });

@@ -13,3 +13,6 @@ yarn-debug.log*
 Thumbs.db
 .idea/
 .vscode/
+
+# Runtime allowlist files
+config/device_macs.json

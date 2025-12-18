@@ -3,8 +3,10 @@ services:
     build: .
     image: ota-server:0.0.1
     container_name: ota-server
+    env_file:
+      - .env
     ports:
-      - "3000:3000"        # 필요 포트에 맞게 조정
+      - "${PORT:-3000}:${PORT:-3000}"        # .env의 PORT를 사용 (없으면 3000)
     volumes:
       - ./firmware:/app/firmware   # 서버 코드가 찾는 경로(/app/firmware)로 바인드
       - ./logs:/app/logs

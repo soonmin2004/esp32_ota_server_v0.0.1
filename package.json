@@ -4,7 +4,10 @@
   "description": "ESP32 OTA update server using WebSocket notifications and HTTP firmware hosting.",
   "main": "src/server.js",
   "scripts": {
-    "start": "node src/server.js"
+    "start": "node src/server.js",
+    "gen:apikey": "node scripts/gen-api-key.js",
+    "gen:apikey:write": "node scripts/gen-api-key.js --write",
+    "gen:apikey:append": "node scripts/gen-api-key.js --write --append"
   },
   "author": "",
   "license": "MIT",
