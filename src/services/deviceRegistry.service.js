@@ -6,6 +6,7 @@ const { DEVICE_MACS, DEVICE_MACS_FILE } = require('../config');
 let fileDeviceMacs = {};
 let watcher = null;
 
+// MAC allowlist loader/merger: env + JSON file (hot-reload via chokidar).
 function normalizeMac(raw) {
   if (!raw) {
     return null;
@@ -122,4 +123,3 @@ module.exports = {
   startDeviceMacsWatcher,
   getEffectiveDeviceMacs,
 };
-

@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const { LOG_DIR } = require('../config');
 
+// Human-friendly OTA history log (tsv) for successful updates.
 function safe(value) {
   if (value === null || value === undefined) {
     return '-';
@@ -46,4 +47,3 @@ function appendUpdateHistoryLog(entry) {
 module.exports = {
   appendUpdateHistoryLog,
 };
-

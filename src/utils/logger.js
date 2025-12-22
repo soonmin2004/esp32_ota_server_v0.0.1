@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const { LOG_FILE, LOG_DIR } = require('../config');
 
+// JSONL logging for OTA reports (per device + aggregate).
 function appendLog(entry) {
   const line = JSON.stringify(entry) + '\n';
   const targets = [LOG_FILE];

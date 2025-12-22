@@ -15,6 +15,7 @@ function getMac(req) {
   return req.headers['x-mac'] || req.query.mac || (req.body && req.body.mac) || null;
 }
 
+// Validates API key, device id, and MAC (allowlist) for OTA routes.
 module.exports = function deviceAuth(req, res, next) {
   if (!API_KEYS || API_KEYS.length === 0) {
     res.status(500).json({ error: errors.SERVER_MISCONFIGURED });

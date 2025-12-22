@@ -4,6 +4,7 @@ const errors = require('../constants/errors');
 const { getDeviceIdFromWsRequest, getFirmwareInfo, normalizeDeviceId } = require('../models/firmware.model');
 const { normalizeMac, isAllowedMac } = require('./deviceRegistry.service');
 
+// WebSocket server: authenticate client, send current firmware info, broadcast on changes.
 function getWsParam(req, name) {
   try {
     const url = new URL(req.url, 'http://localhost');

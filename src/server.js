@@ -8,6 +8,8 @@ const { createWebSocketServer } = require('./services/ws.service');
 const { createWatcher } = require('./services/watcher.service');
 const { startDeviceMacsWatcher } = require('./services/deviceRegistry.service');
 
+// Bootstraps Express + WebSocket OTA server, ensures required dirs, and broadcasts on firmware changes.
+
 // Ensure required directories exist.
 [FIRMWARE_DIR, LOG_DIR].forEach((dir) => {
   if (!fs.existsSync(dir)) {

@@ -7,6 +7,7 @@ const {
   SUPPORTED_DEVICES,
 } = require('../config');
 
+// Firmware selection/metadata helpers: resolve device-specific files, manifest, hash, and URLs.
 const WATCH_GLOBS = [
   path.join(FIRMWARE_DIR, '**', '*.bin'),
   path.join(FIRMWARE_DIR, '**', '*.manifest.json'),

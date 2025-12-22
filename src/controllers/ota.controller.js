@@ -3,6 +3,7 @@ const { appendLog } = require('../utils/logger');
 const { appendUpdateHistoryLog } = require('../utils/updateLogger');
 const errors = require('../constants/errors');
 
+// OTA HTTP handlers: health, metadata, binary download, and client report logging.
 function health(_req, res) {
   res.json({ ok: true });
 }

@@ -5,10 +5,12 @@ const path = require('path');
 const HOST = process.env.HOST || '0.0.0.0';
 const PORT = Number(process.env.PORT || 3000);
 
+// Core paths and firmware defaults.
 const ROOT = path.join(__dirname, '..', '..');
 const FIRMWARE_DIR = path.join(ROOT, 'firmware');
 const FIRMWARE_FILE = process.env.FIRMWARE_FILE || 'firmware.bin';
 
+// Device allowlist (by id) and API key list.
 const SUPPORTED_DEVICES = (process.env.DEVICES || 'gds007,gds-hyd,gds-eco')
   .split(',')
   .map((d) => d.trim().toLowerCase())
